@@ -1,11 +1,15 @@
 package com.example.pgr209exam23.service;
 
+import com.example.pgr209exam23.model.Customer;
+import com.example.pgr209exam23.repo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 
-//kilde ownerService vet clinic example
+
+//kilde ownerService vet clinic example, og forelesning 16
 @Service
 public class CustomerService {
     private final CustomerRepo customerRepo;
@@ -35,11 +39,9 @@ public class CustomerService {
         customerRepo.deleteById(id);
     }
 
+    //update one
+    public Customer updateCustomer(Customer customer){
+        return customerRepo.save(customer);
+    }
 
 }
-
-
-/*
-MAngler:
-	- Update one
-*/

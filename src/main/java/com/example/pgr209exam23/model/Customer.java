@@ -1,7 +1,7 @@
 package com.example.pgr209exam23.model;
 
 //Kilde: Vet clinic eksempel til læreren
-/*
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -29,16 +29,15 @@ public class Customer {
 
     @Column(name = "customer_email")
     private String customerEmail;
-
+/*
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Address> addresses = new ArrayList<>();
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();*/
 
     public Customer(String customerName, String customerEmail) {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
     }
 }
-*/
