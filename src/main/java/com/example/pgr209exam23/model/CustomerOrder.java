@@ -1,20 +1,18 @@
 package com.example.pgr209exam23.model;
 //Kilde: Vet clinic eksempel til læreren
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Order {
+public class CustomerOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_gen")
@@ -26,10 +24,19 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Column(name = "order_date")
+    private LocalDateTime orderDate;
+
+   /* @ManyToOne
+    @JoinColumn(name = "address_id") // Add this annotation
+    private Address address;*/
+
    /* @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<Machine> machines = new ArrayList<>();*/
 
-    public Order(Customer customer) {
+    public CustomerOrder(Customer customer, LocalDateTime orderDate) {
         this.customer = customer;
+        this.orderDate = orderDate;
+
     }
 }

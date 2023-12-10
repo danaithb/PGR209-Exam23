@@ -4,7 +4,7 @@ import com.example.pgr209exam23.model.Customer;
 import com.example.pgr209exam23.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController

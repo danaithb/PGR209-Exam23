@@ -34,8 +34,9 @@ public class Customer {
     @JsonIgnore // Avslutter loopen, må ha denne
     private List<Address> addresses = new ArrayList<>();
 
-   /* @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Order> orders = new ArrayList<>();*/
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<CustomerOrder> orders = new ArrayList<>();
 
     public Customer(Long customerId, String customerName, String customerEmail) {
         this.customerId = customerId;
