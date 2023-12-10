@@ -2,7 +2,7 @@ package com.example.pgr209exam23.model;
 
 //Source: Vet clinic example from teacher
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,14 +29,16 @@ public class Customer {
 
     @Column(name = "customer_email")
     private String customerEmail;
-/*
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore // Avslutter loopen, må ha denne
     private List<Address> addresses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+   /* @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orders = new ArrayList<>();*/
 
-    public Customer(String customerName, String customerEmail) {
+    public Customer(Long customerId, String customerName, String customerEmail) {
+        this.customerId = customerId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
     }
