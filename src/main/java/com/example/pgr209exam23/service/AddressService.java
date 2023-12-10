@@ -32,7 +32,7 @@ public class AddressService {
     }
 
     //Get all with pagination
-    public Page<Address> getAddress(int page, int size) {
+    public Page<Address> getAllAddresses(int page, int size) {
         return addressRepo.findAll(PageRequest.of(page, size));
     }
 

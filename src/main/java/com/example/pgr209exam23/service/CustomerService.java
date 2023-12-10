@@ -28,7 +28,7 @@ public class CustomerService {
     }
 
     //Get all with pagination
-    public Page<Customer> getCustomers(int page, int size){
+    public Page<Customer> getAllCustomers(int page, int size){
         return customerRepo.findAll(PageRequest.of(page, size));
     }
 
