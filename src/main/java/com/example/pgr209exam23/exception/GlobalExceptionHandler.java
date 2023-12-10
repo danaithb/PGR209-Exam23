@@ -1,4 +1,4 @@
-package com.example.pgr209exam23.exeption;
+package com.example.pgr209exam23.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
