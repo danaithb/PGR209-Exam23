@@ -4,6 +4,7 @@ import com.example.pgr209exam23.model.Customer;
 import com.example.pgr209exam23.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/customer")
@@ -23,6 +24,11 @@ public class CustomerController {
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer){
         return customerService.createCustomer(customer);
+    }
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @DeleteMapping("/{id}")
