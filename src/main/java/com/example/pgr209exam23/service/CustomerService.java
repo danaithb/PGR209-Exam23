@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import java.util.*;
 
 //Sources: ownerService vet clinic example, and lecture 16
 @Service
@@ -23,18 +22,13 @@ public class CustomerService {
         return customerRepo.save(customer);
     }
 
-    //Get all customers
-    public List<Customer> getAllCustomers() {
-        return customerRepo.findAll();
-    }
-
     //Get one by id
     public Customer findCustomerById(Long id){
         return customerRepo.findById(id).orElse(null);
     }
 
     //Get all with pagination
-    public Page<Customer> getCustomers(int page, int size){
+    public Page<Customer> getAllCustomers(int page, int size){
         return customerRepo.findAll(PageRequest.of(page, size));
     }
 
