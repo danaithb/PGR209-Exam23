@@ -1,6 +1,6 @@
 package com.example.pgr209exam23.model;
 
-//Kilde: Vet clinic eksempel til læreren
+//Source: Vet clinic example from teacher
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
