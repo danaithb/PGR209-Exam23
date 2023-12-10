@@ -29,11 +29,11 @@ public class Customer {
 
     @Column(name = "customer_email")
     private String customerEmail;
-/*
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Address> addresses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+   /* @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orders = new ArrayList<>();*/
 
     public Customer(String customerName, String customerEmail) {
