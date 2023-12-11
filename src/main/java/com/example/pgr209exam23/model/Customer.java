@@ -39,7 +39,7 @@ public class Customer {
     private List<CustomerOrder> orders = new ArrayList<>();
 
     public Customer(Long customerId, String customerName, String customerEmail) {
-        this.customerId = customerId;
+      //  this.customerId = customerId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
     }
