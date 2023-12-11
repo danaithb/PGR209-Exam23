@@ -1,6 +1,7 @@
 package com.example.pgr209exam23.service;
 
 import com.example.pgr209exam23.model.CustomerOrder;
+import com.example.pgr209exam23.model.Machine;
 import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.repo.SubassemblyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +15,20 @@ import java.util.List;
 public class SubassemblyService {
 
     private final SubassemblyRepo subassemblyRepo;
+
     @Autowired
-    public SubassemblyService(SubassemblyRepo subassemblyRepo){
+    public SubassemblyService(SubassemblyRepo subassemblyRepo) {
         this.subassemblyRepo = subassemblyRepo;
     }
 
     //create one
-    public Subassembly createSubassembly(Subassembly subassembly){
+    public Subassembly createSubassembly(Subassembly subassembly) {
         return subassemblyRepo.save(subassembly);
     }
 
 
     //Get one by id
-    public Subassembly findSubassemblyById(Long id){
+    public Subassembly findSubassemblyById(Long id) {
         return subassemblyRepo.findById(id).orElse(null);
     }
 
@@ -35,15 +37,22 @@ public class SubassemblyService {
         return subassemblyRepo.findAll(PageRequest.of(page, size));
     }
 
+
     //Delete one
-    public void deleteSubassemblyById(Long id){
+    public void deleteSubassemblyById(Long id) {
         subassemblyRepo.deleteById(id);
     }
 
-    // Update one
-    public Subassembly updateSubassembly(Subassembly subassembly) {
-        return subassemblyRepo.save(subassembly);
+    public Subassembly updateSubassembly(Long id, Subassembly updatedSubassembly) {
+        return subassemblyRepo.findById(id).map(subassembly -> {
+            subassembly.setSubassemblyName(updatedSubassembly.getSubassemblyName());
+            subassembly.setSubassemblyArticleNumber(updatedSubassembly.getSubassemblyArticleNumber());
+
+            return subassemblyRepo.save(subassembly);
+        }).orElseGet(() -> {
+            updatedSubassembly.setSubassemblyId(id);
+            return subassemblyRepo.save(updatedSubassembly);
+        });
     }
 }
-
 

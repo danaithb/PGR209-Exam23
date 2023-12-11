@@ -1,4 +1,4 @@
-CREATE TABLE subassembly (
+CREATE TABLE if not exists subassembly (
                              subassembly_id bigint NOT NULL PRIMARY KEY,
                              subassembly_name varchar(255),
                              subassembly_article_number varchar(255),

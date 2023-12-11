@@ -1,10 +1,13 @@
 package com.example.pgr209exam23.controller;
 
+import com.example.pgr209exam23.model.Machine;
 import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.service.SubassemblyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/subassembly")
@@ -22,15 +25,10 @@ public class SubassemblyController {
         return subassemblyService.findSubassemblyById(id);
     }
 
-    @PostMapping
-    public Subassembly createSubassembly(@RequestBody Subassembly subassembly){
-        return subassemblyService.createSubassembly(subassembly);
-    }
-
-    @PostMapping
-    public Page<Subassembly> getSubassembliesPaged
-            (@RequestParam(defaultValue = "0") int page,
-             @RequestParam(defaultValue = "10") int size) {
+    @GetMapping
+    public Page<Subassembly> getAllSubassembliesPaged(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
         return subassemblyService.getAllSubassemblies(page, size);
     }
 
@@ -39,9 +37,8 @@ public class SubassemblyController {
         subassemblyService.deleteSubassemblyById(id);
     }
 
-    @PutMapping
-    public Subassembly updateSubassembly(@RequestBody Subassembly subassembly) {
-        return subassemblyService.updateSubassembly(subassembly);
+    @PutMapping("/{id}")
+    public Subassembly updateSubassembly(@PathVariable Long id, @RequestBody Subassembly updatedSubassembly) {
+        return subassemblyService.updateSubassembly(id, updatedSubassembly);
     }
-
 }
