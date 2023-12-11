@@ -4,4 +4,3 @@ create table customer(
     customer_email varchar(100) not null
 );
 
-create sequence customer_seq;

@@ -1,13 +1,14 @@
-create table address(
-                        address_id bigint not null auto_increment primary key,
-                        street varchar(100) not null,
-                        city varchar(100) not null,
-                        zip_code varchar(100) not null,
-                        customer_id bigint not null,
-                        constraint fk_customer foreign key (customer_id) references customer(customer_id) on delete cascade
-
-
-
+CREATE TABLE IF NOT EXISTS addresses (
+                                         address_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                         street VARCHAR(255),
+                                         city VARCHAR(255),
+                                         zip_code VARCHAR(50)
 );
 
-create sequence address_seq;
+CREATE TABLE IF NOT EXISTS customer_addresses (
+                                                  customer_id BIGINT,
+                                                  address_id BIGINT,
+                                                  PRIMARY KEY (customer_id, address_id),
+                                                  FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
+                                                  FOREIGN KEY (address_id) REFERENCES addresses(address_id) ON DELETE CASCADE
+);
