@@ -6,7 +6,7 @@ spring:
     password: ${DB_PASSWORD}
     driverClassName: org.h2.Driver
     generate-unique-name: false
-    name: Factory
+    name: FactoryDb
   h2:
     console:
       enabled: true
