@@ -1,6 +1,6 @@
-create table customer(
-    customer_id bigint not null auto_increment primary key,
-    customer_name varchar(100) not null,
-    customer_email varchar(100) not null
+CREATE TABLE IF NOT EXISTS customers (
+  customer_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  customer_name VARCHAR(255) NOT NULL,
+     customer_email VARCHAR(255) NOT NULL
 );
 
