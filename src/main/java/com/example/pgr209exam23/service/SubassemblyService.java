@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SubassemblyService {
 
@@ -22,13 +24,14 @@ public class SubassemblyService {
         return subassemblyRepo.save(subassembly);
     }
 
+
     //Get one by id
     public Subassembly findSubassemblyById(Long id){
         return subassemblyRepo.findById(id).orElse(null);
     }
 
     //Get all with pagination
-    public Page<Subassembly> getAllSubassemblies(int page, int size){
+    public Page<Subassembly> getAllSubassemblies(int page, int size) {
         return subassemblyRepo.findAll(PageRequest.of(page, size));
     }
 

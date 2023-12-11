@@ -1,14 +1,13 @@
 package com.example.pgr209exam23.controller;
 
-import com.example.pgr209exam23.model.CustomerOrder;
 import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.service.SubassemblyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/api/subassembly")
 public class SubassemblyController {
 
     private final SubassemblyService subassemblyService;
@@ -24,7 +23,7 @@ public class SubassemblyController {
     }
 
     @PostMapping
-    public Subassembly createSubassembly(@RequestBody Subassembly subassembly) {
+    public Subassembly createSubassembly(@RequestBody Subassembly subassembly){
         return subassemblyService.createSubassembly(subassembly);
     }
 
