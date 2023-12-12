@@ -4,11 +4,12 @@ import com.example.pgr209exam23.model.Customer;
 import com.example.pgr209exam23.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/api/customers")
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -23,8 +24,9 @@ public class CustomerController {
     }
 
     @PostMapping
-    public Customer createCustomer(@RequestBody Customer customer) {
-        return customerService.createCustomer(customer);
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+        Customer newCustomer = customerService.createCustomer(customer);
+        return new ResponseEntity<>(newCustomer, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

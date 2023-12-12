@@ -1,7 +1,10 @@
 CREATE TABLE IF NOT EXISTS orders (
-                                      order_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                      customer_id BIGINT NOT NULL,
-                                      order_date TIMESTAMP NOT NULL,
-                                      FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    order_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    customer_id BIGINT NOT NULL,
+    order_date TIMESTAMP NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
+
+
+
 CREATE SEQUENCE orders_seq;
