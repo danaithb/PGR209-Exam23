@@ -4,3 +4,4 @@ CREATE TABLE IF NOT EXISTS orders (
                                       order_date TIMESTAMP NOT NULL,
                                       FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
+CREATE SEQUENCE orders_seq;

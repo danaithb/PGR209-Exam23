@@ -5,8 +5,13 @@ import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.service.SubassemblyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -29,8 +34,12 @@ public class SubassemblyController {
     public Page<Subassembly> getAllSubassembliesPaged(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return subassemblyService.getAllSubassemblies(page, size);
+        Page<Subassembly> result = subassemblyService.getAllSubassemblies(PageRequest.of(page, size));
+        System.out.println("Retrieved " + result.getTotalElements() + " subassemblies in controller");
+        return result;
     }
+
+
 
     @DeleteMapping("/{id}")
     public void deleteSubassembly(@PathVariable Long id) {

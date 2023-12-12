@@ -15,8 +15,7 @@ import java.util.ArrayList;
 public class Subassembly {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subassembly_seq_gen")
-    @SequenceGenerator(name = "subassembly_seq_gen", sequenceName = "subassembly_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subassembly_id")
     private Long subassemblyId;
 
@@ -33,10 +32,11 @@ public class Subassembly {
         @JoinColumn(name = "machine_id")
         private Machine machine;
 
-    public Subassembly(String subassemblyName, Machine machine, String subassemblyArticleNumber) {
+    public Subassembly(String subassemblyName, String subassemblyArticleNumber) {
         this.subassemblyName = subassemblyName;
-        this.machine = machine;
         this.subassemblyArticleNumber = subassemblyArticleNumber;
     }
+
+
 }
 
