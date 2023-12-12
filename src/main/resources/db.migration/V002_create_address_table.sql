@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS addresses (
     city VARCHAR(255) NOT NULL,
     zip_code VARCHAR(50) NOT NULL
 );
+CREATE SEQUENCE address_seq;
 
 CREATE TABLE IF NOT EXISTS customer_addresses (
    customer_id BIGINT,
@@ -12,3 +13,4 @@ CREATE TABLE IF NOT EXISTS customer_addresses (
    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE,
    FOREIGN KEY (address_id) REFERENCES addresses(address_id) ON DELETE CASCADE
 );
+CREATE SEQUENCE customer_addresses_seq;
