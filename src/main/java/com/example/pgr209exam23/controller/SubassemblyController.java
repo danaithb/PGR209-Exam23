@@ -40,9 +40,7 @@ public class SubassemblyController {
         System.out.println("Retrieved " + result.getTotalElements() + " subassemblies in controller");
         return result;
     }
-
-
-
+    /*
     @DeleteMapping("/{id}")
     public void deleteSubassembly(@PathVariable Long id) {
         subassemblyService.deleteSubassemblyById(id);
@@ -51,5 +49,5 @@ public class SubassemblyController {
     @PutMapping("/{id}")
     public Subassembly updateSubassembly(@PathVariable Long id, @RequestBody Subassembly updatedSubassembly) {
         return subassemblyService.updateSubassembly(id, updatedSubassembly);
-    }
+    }*/
 }

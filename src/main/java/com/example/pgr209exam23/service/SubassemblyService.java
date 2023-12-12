@@ -45,29 +45,6 @@ public class SubassemblyService {
         return result;
     }
 
-
-
-   /* public Page<Subassembly> getAllSubassemblies(Pageable pageable) {
-        List<Subassembly> subassemblies = Arrays.asList(
-                new Subassembly("robotarm", null, "article123"),
-                new Subassembly("robotleg", null, "article456")
-        );
-
-        int pageSize = pageable.getPageSize();
-        int currentPage = pageable.getPageNumber();
-        int startItem = currentPage * pageSize;
-        List<Subassembly> resultList;
-
-        if (subassemblies.size() < startItem) {
-            resultList = Collections.emptyList();
-        } else {
-            int toIndex = Math.min(startItem + pageSize, subassemblies.size());
-            resultList = subassemblies.subList(startItem, toIndex);
-        }
-
-        return new PageImpl<>(resultList, PageRequest.of(currentPage, pageSize), subassemblies.size());
-    }*/
-
     //Delete one
     public void deleteSubassemblyById(Long id) {
         subassemblyRepo.deleteById(id);
