@@ -1,9 +1,8 @@
-
 spring:
   datasource:
     url: jdbc:h2:mem:mydb
     username: admin
-    password: ${DB_PASSWORD}
+    password:
     driverClassName: org.h2.Driver
     generate-unique-name: false
     name: FactoryDb
