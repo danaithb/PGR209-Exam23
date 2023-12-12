@@ -41,7 +41,7 @@ public class SubassemblyController {
         return result;
     }
 
-
+/*
 
     @DeleteMapping("/{id}")
     public void deleteSubassembly(@PathVariable Long id) {
@@ -51,5 +51,5 @@ public class SubassemblyController {
     @PutMapping("/{id}")
     public Subassembly updateSubassembly(@PathVariable Long id, @RequestBody Subassembly updatedSubassembly) {
         return subassemblyService.updateSubassembly(id, updatedSubassembly);
-    }
+    }*/
 }

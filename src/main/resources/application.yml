@@ -1,5 +1,7 @@
 
 spring:
+  security:
+    enabled: false
   datasource:
     url: jdbc:h2:mem:mydb
     username: admin
