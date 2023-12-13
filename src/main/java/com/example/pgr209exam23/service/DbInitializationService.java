@@ -1,4 +1,4 @@
-package com.example.pgr209exam23.service;
+/*package com.example.pgr209exam23.service;
 
 import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.repo.SubassemblyRepo;
@@ -21,4 +21,4 @@ public class DbInitializationService {
         subassemblyRepo.save(robotArm);
         subassemblyRepo.save(robotLeg);
     }
-}
+}*/

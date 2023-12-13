@@ -1,2 +1,4 @@
-INSERT INTO machine (name, description) VALUES ('Lathe', 'A machine for shaping wood, metal, or other material by means of a rotating drive that turns the piece being worked on against changeable cutting tools.');
-INSERT INTO machine (name, description) VALUES ('Milling Machine', 'A machine tool in which a rotating cutter is moved against the workpiece (or vice versa) in order to cut the latter to a desired shape.');
+INSERT INTO machine (machine_name, description) VALUES ('Lathe', 'A machine for shaping wood');
+INSERT INTO machine (machine_name, description) VALUES ('Milling Machine', 'A machine tool in which a rotating cutter.');
+
+

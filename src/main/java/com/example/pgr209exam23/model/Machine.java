@@ -10,10 +10,7 @@ public class Machine {
     @SequenceGenerator(name = "machine_seq_gen", sequenceName = "machine_seq", allocationSize = 1)
     private Long machineId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = true)
-    private CustomerOrder order;
-
+    @Column(nullable = false)
     private String machineName;
     private String description;
 
@@ -35,14 +32,6 @@ public class Machine {
         this.machineId = machineId;
     }
 
-    public CustomerOrder getOrder() {
-        return order;
-    }
-
-    public void setOrder(CustomerOrder order) {
-        this.order = order;
-    }
-
     public String getMachineName() {
         return machineName;
     }
@@ -59,11 +48,10 @@ public class Machine {
         this.description = description;
     }
 
-     @Override
+    @Override
     public String toString() {
         return "Machine{" +
                 "machineId=" + machineId +
-                ", order=" + (order != null ? order.getOrderId() : null) +
                 ", machineName='" + machineName + '\'' +
                 ", description='" + description + '\'' +
                 '}';
