@@ -11,7 +11,7 @@ public class Machine {
     private Long machineId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "order_id", nullable = true)
     private CustomerOrder order;
 
     private String machineName;
