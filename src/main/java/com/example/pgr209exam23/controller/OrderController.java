@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {
@@ -24,9 +27,15 @@ public class OrderController {
         return orderService.findOrderById(id);
     }
 
-    @PostMapping
-    public ResponseEntity<CustomerOrder> createOrder(@RequestBody CustomerOrder order) {
-        CustomerOrder createdOrder = orderService.createOrder(order);
+    @PostMapping("/api/orders")
+    public ResponseEntity<CustomerOrder> createOrder(
+            @RequestParam Long customerId,
+            @RequestParam LocalDateTime orderDate,
+            @RequestParam List<Long> machineIds
+    ) {
+        CustomerOrder createdOrder = orderService.createOrder(customerId, orderDate, machineIds);
+
+
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
 

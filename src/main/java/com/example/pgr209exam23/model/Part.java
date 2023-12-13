@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -20,6 +23,7 @@ public class Part {
     @Column(name = "part_name")
     private String partName;
 
+
     @ManyToOne
     @JoinColumn(name = "subassembly_id")
     @JsonIgnore
@@ -29,29 +33,4 @@ public class Part {
         this.partName = partName;
     }
 
-    // Getters and setters
-
-    public Long getPartId() {
-        return partId;
-    }
-
-    public void setPartId(Long partId) {
-        this.partId = partId;
-    }
-
-    public String getPartName() {
-        return partName;
-    }
-
-    public void setPartName(String partName) {
-        this.partName = partName;
-    }
-
-    public Subassembly getSubassembly() {
-        return subassembly;
-    }
-
-    public void setSubassembly(Subassembly subassembly) {
-        this.subassembly = subassembly;
-    }
 }

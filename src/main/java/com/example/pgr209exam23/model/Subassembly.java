@@ -1,6 +1,7 @@
 package com.example.pgr209exam23.model;
 //Kilde: Vet clinic eksempel til læreren
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,18 +27,25 @@ public class Subassembly {
     @Column(name = "subassembly_article_number")
     private String subassemblyArticleNumber;
 
-       @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL)
-        private List<Part> parts = new ArrayList<>();
+    @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Part> parts;
 
         @ManyToOne
         @JoinColumn(name = "machine_id")
         private Machine machine;
 
+
+
     public Subassembly(String subassemblyName, String subassemblyArticleNumber) {
         this.subassemblyName = subassemblyName;
         this.subassemblyArticleNumber = subassemblyArticleNumber;
+        this.parts = new ArrayList<>();
     }
 
+    public void setMachine(Machine machine) {
+        this.machine = machine;
+    }
 
 }
 

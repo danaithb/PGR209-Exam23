@@ -5,6 +5,7 @@ import com.example.pgr209exam23.model.Machine;
 import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.repo.SubassemblyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 
 @Service
 public class SubassemblyService {
@@ -36,7 +38,6 @@ public class SubassemblyService {
         return subassemblyRepo.findById(id).orElse(null);
     }
 
-    //Get all with pagination
 
     // Get all with pagination
     public Page<Subassembly> getAllSubassemblies(Pageable pageable) {
@@ -45,21 +46,7 @@ public class SubassemblyService {
         return result;
     }
 
-    //Delete one
-    public void deleteSubassemblyById(Long id) {
-        subassemblyRepo.deleteById(id);
-    }
 
-    public Subassembly updateSubassembly(Long id, Subassembly updatedSubassembly) {
-        return subassemblyRepo.findById(id).map(subassembly -> {
-            subassembly.setSubassemblyName(updatedSubassembly.getSubassemblyName());
-            subassembly.setSubassemblyArticleNumber(updatedSubassembly.getSubassemblyArticleNumber());
 
-            return subassemblyRepo.save(subassembly);
-        }).orElseGet(() -> {
-            updatedSubassembly.setSubassemblyId(id);
-            return subassemblyRepo.save(updatedSubassembly);
-        });
-    }
 }
 

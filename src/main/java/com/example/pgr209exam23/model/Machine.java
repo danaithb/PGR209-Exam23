@@ -2,6 +2,9 @@ package com.example.pgr209exam23.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Machine {
 
@@ -11,8 +14,9 @@ public class Machine {
     private Long machineId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "order_id")
     private CustomerOrder order;
+
 
     private String machineName;
     private String description;
@@ -59,6 +63,11 @@ public class Machine {
         this.description = description;
     }
 
+
+    @OneToMany(mappedBy = "machine", cascade = CascadeType.ALL)
+    private List<Subassembly> subassemblies = new ArrayList<>();
+
+
      @Override
     public String toString() {
         return "Machine{" +
@@ -68,4 +77,10 @@ public class Machine {
                 ", description='" + description + '\'' +
                 '}';
     }
+    public List<Subassembly> getSubassemblies() {
+        return subassemblies;
+    }
+
+
+
 }

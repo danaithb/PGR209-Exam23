@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,16 +29,17 @@ public class CustomerOrder {
     @Column(name = "order_date")
     private LocalDateTime orderDate;
 
-   /* @ManyToOne
-    @JoinColumn(name = "address_id") // Add this annotation
-    private Address address;*/
+   @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
-   /* @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<Machine> machines = new ArrayList<>();*/
+   @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<Machine> machines = new ArrayList<>();
+
+
 
     public CustomerOrder(Customer customer, LocalDateTime orderDate) {
         this.customer = customer;
         this.orderDate = orderDate;
-
     }
 }
