@@ -36,8 +36,6 @@ public class SubassemblyService {
         return subassemblyRepo.findById(id).orElse(null);
     }
 
-    //Get all with pagination
-
     // Get all with pagination
     public Page<Subassembly> getAllSubassemblies(Pageable pageable) {
         Page<Subassembly> result = subassemblyRepo.findAll(pageable);
