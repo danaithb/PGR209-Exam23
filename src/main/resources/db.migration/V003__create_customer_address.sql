@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS customer_address (
     FOREIGN KEY (address_id) REFERENCES address(address_id) ON DELETE CASCADE
     );
 
-CREATE SEQUENCE customer_addresses_seq;
+CREATE SEQUENCE customer_address_seq;
