@@ -1,6 +1,7 @@
 package com.example.pgr209exam23.controller;
 
 import com.example.pgr209exam23.model.CustomerOrder;
+import com.example.pgr209exam23.model.Machine;
 import com.example.pgr209exam23.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,17 +28,26 @@ public class OrderController {
         return orderService.findOrderById(id);
     }
 
-    @PostMapping("/api/orders")
-    public ResponseEntity<CustomerOrder> createOrder(
-            @RequestParam Long customerId,
-            @RequestParam LocalDateTime orderDate,
-            @RequestParam List<Long> machineIds
-    ) {
-        CustomerOrder createdOrder = orderService.createOrder(customerId, orderDate, machineIds);
-
+    @PostMapping
+    public ResponseEntity<CustomerOrder> createOrder(@RequestBody CustomerOrder customerOrder) {
+        CustomerOrder createdOrder = orderService.createOrder(
+                customerOrder.getCustomer().getCustomerId(),
+                customerOrder.getOrderDate(),
+                extractMachineIds(customerOrder.getMachines())
+        );
 
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
+
+
+    private List<Long> extractMachineIds(List<Machine> machines) {
+        List<Long> machineIds = new ArrayList<>();
+        for (Machine machine : machines) {
+            machineIds.add(machine.getMachineId());
+        }
+        return machineIds;
+    }
+
 
     @DeleteMapping("/{id}")
     public void deleteOrder(@PathVariable Long id) {
