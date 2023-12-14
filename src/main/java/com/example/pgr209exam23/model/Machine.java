@@ -14,13 +14,14 @@ public class Machine {
     private String machineName;
     private String description;
 
-    public Machine() {
-
-    }
 
     public Machine(String machineName, String description) {
         this.machineName = machineName;
         this.description = description;
+    }
+
+    public Machine() {
+
     }
 
     // Getters og setters

@@ -29,7 +29,7 @@ public class CustomerOrder {
     @Column(name = "order_date")
     private LocalDateTime orderDate;
 
-   @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
 
@@ -41,4 +41,6 @@ public class CustomerOrder {
         this.orderDate = orderDate;
 
     }
+
+
 }
