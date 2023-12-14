@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,10 +25,10 @@ public class Subassembly {
 
     @Column(name = "subassembly_article_number")
     private String subassemblyArticleNumber;
-    /*
+
        @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL)
-        private List<Part> parts = new ArrayLi<>();
-    */
+        private List<Part> parts = new ArrayList<>();
+
         @ManyToOne
         @JoinColumn(name = "machine_id")
         private Machine machine;
