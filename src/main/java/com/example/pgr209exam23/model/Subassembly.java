@@ -1,6 +1,8 @@
 package com.example.pgr209exam23.model;
 
 import jakarta.persistence.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class Subassembly {
@@ -12,17 +14,13 @@ public class Subassembly {
     @Column(nullable = false)
     private String subassemblyName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "machine_id")
-    private Machine machine;
+    @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Part> parts;
 
-    // Konstruktører, getters, og setters
-    public Subassembly() {
-    }
+    public Subassembly() {}
 
-    public Subassembly(String subassemblyName, Machine machine) {
+    public Subassembly(String subassemblyName) {
         this.subassemblyName = subassemblyName;
-        this.machine = machine;
     }
 
     public Long getSubassemblyId() {
@@ -41,20 +39,26 @@ public class Subassembly {
         this.subassemblyName = subassemblyName;
     }
 
-    public Machine getMachine() {
-        return machine;
+    public List<Part> getParts() {
+        return parts;
     }
 
-    public void setMachine(Machine machine) {
-        this.machine = machine;
+    public void setParts(List<Part> parts) {
+        this.parts = parts;
     }
 
     @Override
     public String toString() {
+        String partIds = getParts().stream()
+                .map(part -> part.getPartId().toString())
+                .collect(Collectors.joining(", "));
         return "Subassembly{" +
                 "subassemblyId=" + subassemblyId +
                 ", subassemblyName='" + subassemblyName + '\'' +
-                ", machine=" + (machine != null ? machine.getMachineId() : null) +
+                ", parts=" + partIds +
                 '}';
     }
+
+
 }
+

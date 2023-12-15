@@ -2,6 +2,7 @@ package com.example.pgr209exam23.model;
 
 import jakarta.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Machine {
@@ -16,8 +17,9 @@ public class Machine {
 
     private String description;
 
-    @OneToMany(mappedBy = "machine", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Subassembly> subassemblies; // Liste av subassemblies
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "machine_id") // Kolonnen i subassembly-tabellen som refererer til machine-tabellen.
+    private List<Subassembly> subassemblies;
 
     public Machine() {
     }
@@ -62,11 +64,15 @@ public class Machine {
 
     @Override
     public String toString() {
+        String subassemblyIds = getSubassemblies().stream()
+                .map(subassembly -> subassembly.getSubassemblyId().toString())
+                .collect(Collectors.joining(", "));
         return "Machine{" +
                 "machineId=" + machineId +
                 ", machineName='" + machineName + '\'' +
                 ", description='" + description + '\'' +
-                ", subassemblies=" + subassemblies +
+                ", subassemblies=" + subassemblyIds +
                 '}';
     }
+
 }
