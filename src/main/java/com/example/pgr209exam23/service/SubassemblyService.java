@@ -30,7 +30,6 @@ public class SubassemblyService {
         return subassemblyRepo.save(subassembly);
     }
 
-
     //Get one by id
     public Subassembly findSubassemblyById(Long id) {
         return subassemblyRepo.findById(id).orElse(null);
@@ -51,13 +50,15 @@ public class SubassemblyService {
     public Subassembly updateSubassembly(Long id, Subassembly updatedSubassembly) {
         return subassemblyRepo.findById(id).map(subassembly -> {
             subassembly.setSubassemblyName(updatedSubassembly.getSubassemblyName());
-            subassembly.setSubassemblyArticleNumber(updatedSubassembly.getSubassemblyArticleNumber());
+            // Fjern linjen som oppdaterer subassemblyArticleNumber
 
             return subassemblyRepo.save(subassembly);
         }).orElseGet(() -> {
             updatedSubassembly.setSubassemblyId(id);
+            // Ikke sett subassemblyArticleNumber her heller
             return subassemblyRepo.save(updatedSubassembly);
         });
     }
+
 }
 

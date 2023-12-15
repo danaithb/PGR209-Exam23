@@ -1,6 +1,7 @@
 package com.example.pgr209exam23.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Machine {
@@ -12,10 +13,13 @@ public class Machine {
 
     @Column(nullable = false)
     private String machineName;
+
     private String description;
 
-    public Machine() {
+    @OneToMany(mappedBy = "machine", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Subassembly> subassemblies; // Liste av subassemblies
 
+    public Machine() {
     }
 
     public Machine(String machineName, String description) {
@@ -48,12 +52,21 @@ public class Machine {
         this.description = description;
     }
 
+    public List<Subassembly> getSubassemblies() {
+        return subassemblies;
+    }
+
+    public void setSubassemblies(List<Subassembly> subassemblies) {
+        this.subassemblies = subassemblies;
+    }
+
     @Override
     public String toString() {
         return "Machine{" +
                 "machineId=" + machineId +
                 ", machineName='" + machineName + '\'' +
                 ", description='" + description + '\'' +
+                ", subassemblies=" + subassemblies +
                 '}';
     }
 }

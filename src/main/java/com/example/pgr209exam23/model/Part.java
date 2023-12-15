@@ -23,10 +23,8 @@ public class Part {
     @Column(name = "part_name")
     private String partName;
 
-
     @ManyToOne
     @JoinColumn(name = "subassembly_id")
-    @JsonIgnore
     private Subassembly subassembly;
 
     public Part(String partName) {

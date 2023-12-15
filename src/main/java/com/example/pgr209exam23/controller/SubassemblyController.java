@@ -1,6 +1,5 @@
 package com.example.pgr209exam23.controller;
 
-import com.example.pgr209exam23.model.Machine;
 import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.service.SubassemblyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import java.util.List;
 public class SubassemblyController {
 
     private final SubassemblyService subassemblyService;
-
     @Autowired
     public SubassemblyController(SubassemblyService subassemblyService) {
         this.subassemblyService = subassemblyService;
@@ -39,6 +37,11 @@ public class SubassemblyController {
         Page<Subassembly> result = subassemblyService.getAllSubassemblies(PageRequest.of(page, size));
         System.out.println("Retrieved " + result.getTotalElements() + " subassemblies in controller");
         return result;
+    }
+
+    @PostMapping
+    public Subassembly createSubassembly(@RequestBody Subassembly subassembly) {
+        return subassemblyService.createSubassembly(subassembly);
     }
     /*
     @DeleteMapping("/{id}")

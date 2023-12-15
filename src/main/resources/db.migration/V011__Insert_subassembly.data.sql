@@ -1,2 +1,2 @@
-INSERT INTO subassembly (subassembly_name, subassembly_article_number, part_id) VALUES ('Kork', 'GBX-342', 1);
-INSERT INTO subassembly (subassembly_name, subassembly_article_number, part_id) VALUES ('Håndtak', 'HP-783', 2);
+INSERT INTO subassembly (subassembly_name, part_id) VALUES ('Kork', 1);
+INSERT INTO subassembly (subassembly_name, part_id) VALUES ('Håndtak', 2);

@@ -1,43 +1,60 @@
 package com.example.pgr209exam23.model;
-//Kilde: Vet clinic eksempel til læreren
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 public class Subassembly {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subassembly_id")
     private Long subassemblyId;
 
-    @Column(name = "subassembly_name")
+    @Column(nullable = false)
     private String subassemblyName;
 
-    @Column(name = "subassembly_article_number")
-    private String subassemblyArticleNumber;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "machine_id")
+    private Machine machine;
 
-       @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL)
-        private List<Part> parts = new ArrayList<>();
-
-        @ManyToOne
-        @JoinColumn(name = "machine_id")
-        private Machine machine;
-
-    public Subassembly(String subassemblyName, String subassemblyArticleNumber) {
-        this.subassemblyName = subassemblyName;
-        this.subassemblyArticleNumber = subassemblyArticleNumber;
+    // Konstruktører, getters, og setters
+    public Subassembly() {
     }
 
+    public Subassembly(String subassemblyName, Machine machine) {
+        this.subassemblyName = subassemblyName;
+        this.machine = machine;
+    }
 
+    public Long getSubassemblyId() {
+        return subassemblyId;
+    }
+
+    public void setSubassemblyId(Long subassemblyId) {
+        this.subassemblyId = subassemblyId;
+    }
+
+    public String getSubassemblyName() {
+        return subassemblyName;
+    }
+
+    public void setSubassemblyName(String subassemblyName) {
+        this.subassemblyName = subassemblyName;
+    }
+
+    public Machine getMachine() {
+        return machine;
+    }
+
+    public void setMachine(Machine machine) {
+        this.machine = machine;
+    }
+
+    @Override
+    public String toString() {
+        return "Subassembly{" +
+                "subassemblyId=" + subassemblyId +
+                ", subassemblyName='" + subassemblyName + '\'' +
+                ", machine=" + (machine != null ? machine.getMachineId() : null) +
+                '}';
+    }
 }
-

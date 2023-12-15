@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/machines")
+@RequestMapping("/api/machine")
 public class MachineController {
 
     private final MachineService machineService;
