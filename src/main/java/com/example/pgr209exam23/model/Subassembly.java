@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 public class Subassembly {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subassembly_seq_gen")
+    @SequenceGenerator(name = "subassembly_seq_gen", sequenceName = "subassembly_seq", allocationSize = 1)
     private Long subassemblyId;
 
     @Column(nullable = false)

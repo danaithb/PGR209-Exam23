@@ -1,6 +1,8 @@
 package com.example.pgr209exam23.model;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +21,7 @@ public class Machine {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "machine_id")
-    private List<Subassembly> subassemblies;
+    private List<Subassembly> subassemblies = new ArrayList<>();
 
     public Machine() {
     }
