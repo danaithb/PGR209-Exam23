@@ -17,8 +17,7 @@ public class Part {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "part_id")
     private Long partId;
-
-    @JsonIgnore
+    
     @Column(name = "part_name")
     private String partName;
 
