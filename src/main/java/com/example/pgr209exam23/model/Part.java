@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -20,6 +18,7 @@ public class Part {
     @Column(name = "part_id")
     private Long partId;
 
+    @JsonIgnore
     @Column(name = "part_name")
     private String partName;
 

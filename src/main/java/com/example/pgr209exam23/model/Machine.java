@@ -54,24 +54,22 @@ public class Machine {
         this.description = description;
     }
 
-    public List<Subassembly> getSubassemblies() {
-        return subassemblies;
-    }
-
-    public void setSubassemblies(List<Subassembly> subassemblies) {
-        this.subassemblies = subassemblies;
+    public List<Long> getSubassemblyIds() {
+        return subassemblies.stream()
+                .map(Subassembly::getSubassemblyId)
+                .collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
-        String subassemblyIds = getSubassemblies().stream()
-                .map(subassembly -> subassembly.getSubassemblyId().toString())
+        String subassemblyIds = getSubassemblyIds().stream()
+                .map(Object::toString)
                 .collect(Collectors.joining(", "));
         return "Machine{" +
                 "machineId=" + machineId +
                 ", machineName='" + machineName + '\'' +
                 ", description='" + description + '\'' +
-                ", subassemblies=" + subassemblyIds +
+                ", subassemblyIds=" + subassemblyIds +
                 '}';
     }
 

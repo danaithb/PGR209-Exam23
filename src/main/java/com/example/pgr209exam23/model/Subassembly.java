@@ -47,10 +47,16 @@ public class Subassembly {
         this.parts = parts;
     }
 
+    public List<Long> getPartIds() {
+        return parts.stream()
+                .map(Part::getPartId)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
-        String partIds = getParts().stream()
-                .map(part -> part.getPartId().toString())
+        String partIds = getPartIds().stream()
+                .map(Object::toString)
                 .collect(Collectors.joining(", "));
         return "Subassembly{" +
                 "subassemblyId=" + subassemblyId +
@@ -58,7 +64,5 @@ public class Subassembly {
                 ", parts=" + partIds +
                 '}';
     }
-
-
 }
 

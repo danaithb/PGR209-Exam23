@@ -50,7 +50,6 @@ public class SubassemblyService {
     public Subassembly updateSubassembly(Long id, Subassembly updatedSubassembly) {
         return subassemblyRepo.findById(id).map(subassembly -> {
             subassembly.setSubassemblyName(updatedSubassembly.getSubassemblyName());
-            // Fjern linjen som oppdaterer subassemblyArticleNumber
 
             return subassemblyRepo.save(subassembly);
         }).orElseGet(() -> {
