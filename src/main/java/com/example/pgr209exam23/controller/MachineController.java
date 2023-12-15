@@ -17,6 +17,7 @@ public class MachineController {
         this.machineService = machineService;
     }
 
+    // Get one machine by ID
     @GetMapping("/{id}")
     public Machine getMachine(@PathVariable Long id) {
         return machineService.findMachineById(id);

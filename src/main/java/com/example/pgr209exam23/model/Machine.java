@@ -17,8 +17,8 @@ public class Machine {
 
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "machine_id") // Kolonnen i subassembly-tabellen som refererer til machine-tabellen.
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "machine_id")
     private List<Subassembly> subassemblies;
 
     public Machine() {

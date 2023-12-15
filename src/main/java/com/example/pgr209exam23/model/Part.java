@@ -23,9 +23,11 @@ public class Part {
     @Column(name = "part_name")
     private String partName;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "subassembly_id")
     private Subassembly subassembly;
+
 
     public Part(String partName) {
         this.partName = partName;
