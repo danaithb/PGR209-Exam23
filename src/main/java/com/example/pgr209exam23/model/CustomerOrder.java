@@ -31,7 +31,11 @@ public class CustomerOrder {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL)
+   /* @OneToMany(cascade = CascadeType.ALL)
+    private List<Machine> machines = new ArrayList<>();
+*/
+
+    @OneToMany(cascade = CascadeType.MERGE)
     private List<Machine> machines = new ArrayList<>();
 
     public CustomerOrder(Customer customer, LocalDateTime orderDate) {
@@ -39,4 +43,5 @@ public class CustomerOrder {
         this.orderDate = orderDate;
 
     }
+
 }
