@@ -1,5 +1,4 @@
 package com.example.pgr209exam23.model;
-//Kilde: Vet clinic eksempel til læreren
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,7 +8,6 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 @Entity
 @Getter
 @Setter

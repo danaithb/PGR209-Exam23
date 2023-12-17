@@ -1,15 +1,12 @@
 package com.example.pgr209exam23.controller;
 
-import com.example.pgr209exam23.model.Customer;
 import com.example.pgr209exam23.model.Part;
 import com.example.pgr209exam23.service.PartService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/api/part")
@@ -27,7 +24,7 @@ public class PartController {
         return partService.findPartById(id);
     }
 
-    /* @PostMapping
+    @PostMapping
      public ResponseEntity<Part> createPart(@RequestBody Part part) {
          Part newPart = partService.createPart(part);
          return new ResponseEntity<>(newPart, HttpStatus.CREATED);
@@ -42,7 +39,7 @@ public class PartController {
      public Part updatePart(@RequestBody Part part) {
          return partService.updatePart(part);
      }
- */
+
     @GetMapping
     public ResponseEntity<Page<Part>> getParts(
             @RequestParam(defaultValue = "0") int page,

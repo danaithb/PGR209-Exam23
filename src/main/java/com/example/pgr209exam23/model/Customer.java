@@ -1,16 +1,11 @@
 package com.example.pgr209exam23.model;
 
-//Source: Vet clinic example from teacher
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
-
 @Entity
 @Getter
 @Setter

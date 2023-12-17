@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/api/subassembly")
 public class SubassemblyController {
@@ -36,7 +35,7 @@ public class SubassemblyController {
     public Subassembly createSubassembly(@RequestBody Subassembly subassembly) {
         return subassemblyService.createSubassembly(subassembly);
     }
-    /*
+
     @DeleteMapping("/{id}")
     public void deleteSubassembly(@PathVariable Long id) {
         subassemblyService.deleteSubassemblyById(id);
@@ -45,5 +44,5 @@ public class SubassemblyController {
     @PutMapping("/{id}")
     public Subassembly updateSubassembly(@PathVariable Long id, @RequestBody Subassembly updatedSubassembly) {
         return subassemblyService.updateSubassembly(id, updatedSubassembly);
-    }*/
+    }
 }
