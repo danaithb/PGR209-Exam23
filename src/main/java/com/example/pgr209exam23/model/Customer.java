@@ -26,13 +26,14 @@ public class Customer {
     @Column(name = "customer_email")
     private String customerEmail;
 
+
+    //byttet til address her, var koblet til feil table før
     @ManyToMany
     @JoinTable(
-            name = "customer_address",
+            name = "address",
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "address_id")
     )
-
     private List<Address> addresses;
 
     public Customer(String customerName, String customerEmail) {
