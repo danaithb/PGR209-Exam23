@@ -17,8 +17,7 @@ public class Part {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "part_seq_gen")
     @SequenceGenerator(name = "part_seq_gen", sequenceName = "part_seq", allocationSize = 1)
     private Long partId;
-
-    @JsonIgnore
+    
     @Column(name = "part_name")
     private String partName;
 

@@ -16,7 +16,7 @@ public class Subassembly {
     private String subassemblyName;
 
     @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Part> parts;
+    private List<Part> parts = new ArrayList<>();
 
     public Subassembly() {}
 
