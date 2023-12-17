@@ -19,9 +19,9 @@ public class Machine {
 
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "machine_id")
-    private List<Subassembly> subassemblies;
+    private List<Subassembly> subassemblies = new ArrayList<>();
 
     public Machine() {
     }
@@ -56,17 +56,15 @@ public class Machine {
         this.description = description;
     }
 
-    public List<Subassembly> getSubassemblies() {
-        return subassemblies;
-    }
-
-    public void setSubassemblies(List<Subassembly> subassemblies) {
-        this.subassemblies = subassemblies;
+    public List<Long> getSubassemblyIds() {
+        return subassemblies.stream()
+                .map(Subassembly::getSubassemblyId)
+                .collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
-        String subassemblyIds = getSubassemblies().stream()
+        String subassemblyIds = getSubassemblyIds().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining(", "));
         return "Machine{" +

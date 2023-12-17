@@ -21,7 +21,7 @@ public class MachineService {
     @Transactional(readOnly = true)
     public Machine findMachineById(Long id) {
         return machineRepo.findById(id).map(machine -> {
-            machine.getSubassemblies().size(); // Trigger loading of subassemblies
+            machine.getSubassemblyIds().size(); // Trigger loading of subassemblies
             return machine;
         }).orElse(null);
     }
