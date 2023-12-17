@@ -3,7 +3,9 @@ CREATE TABLE IF NOT EXISTS orders (
     customer_id BIGINT NOT NULL,
     machine_id BIGINT NOT NULL,
     order_date TIMESTAMP NOT NULL,
+    address_id BIGINT,
     FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+    FOREIGN KEY (address_id) REFERENCES addresses(address_id),
     FOREIGN KEY (machine_id) REFERENCES machine(machine_id) ON DELETE CASCADE
     );
 

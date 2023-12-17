@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Getter
@@ -33,6 +36,13 @@ public class Address {
     @JoinColumn(name = "customer_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Customer customer;
+
+
+
+
+@OneToMany(mappedBy = "address")
+private List<CustomerOrder> orders = new ArrayList<>();
+
 
     public Address(Long addressId, String street, String city, String zipCode, Customer customer) {
         this.addressId = addressId;

@@ -1,5 +1,7 @@
 package com.example.pgr209exam23.service;
 
+import com.example.pgr209exam23.model.Address;
+import com.example.pgr209exam23.model.Customer;
 import com.example.pgr209exam23.model.CustomerOrder;
 import com.example.pgr209exam23.repo.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,22 +9,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class OrderService {
 
     private final OrderRepo orderRepo;
 
+
     @Autowired
-    public OrderService(OrderRepo orderRepo) {
+    public OrderService(OrderRepo orderRepo, CustomerService customerService, AddressService addressService) {
         this.orderRepo = orderRepo;
+
     }
 
+
     // Create one
-
-
     public CustomerOrder createOrder(CustomerOrder order) {
         return orderRepo.save(order);
     }

@@ -27,7 +27,7 @@ public class PartController {
         return partService.findPartById(id);
     }
 
-    /* @PostMapping
+    @PostMapping
      public ResponseEntity<Part> createPart(@RequestBody Part part) {
          Part newPart = partService.createPart(part);
          return new ResponseEntity<>(newPart, HttpStatus.CREATED);
@@ -42,7 +42,7 @@ public class PartController {
      public Part updatePart(@RequestBody Part part) {
          return partService.updatePart(part);
      }
- */
+
     @GetMapping
     public ResponseEntity<Page<Part>> getParts(
             @RequestParam(defaultValue = "0") int page,

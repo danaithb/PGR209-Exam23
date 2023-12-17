@@ -29,11 +29,13 @@ public class CustomerOrder {
     @Column(name = "order_date")
     private LocalDateTime orderDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL)
+
+    //endret denne
+    @OneToMany(cascade = CascadeType.MERGE)
     private List<Machine> machines = new ArrayList<>();
 
     public CustomerOrder(Customer customer, LocalDateTime orderDate) {
@@ -41,6 +43,7 @@ public class CustomerOrder {
         this.orderDate = orderDate;
 
     }
+
 
 
 }
