@@ -21,10 +21,9 @@ public class AddressService {
         return addressRepo.findById(id).orElse(null);
     }
 
-    // Delete one
+     // Delete one
     public void deleteAddress(Long id) {
-        addressRepo.deleteById(id);
-    }
+        addressRepo.deleteById(id);}
 
     // Get all with pagination
     public Page<Address> getAllAddresses(int page, int size) {
