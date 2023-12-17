@@ -2,6 +2,10 @@ package com.example.pgr209exam23.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Entity
 public class Machine {
 
@@ -12,16 +16,19 @@ public class Machine {
 
     @Column(nullable = false)
     private String machineName;
+
     private String description;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "machine_id")
+    private List<Subassembly> subassemblies;
+
+    public Machine() {
+    }
 
     public Machine(String machineName, String description) {
         this.machineName = machineName;
         this.description = description;
-    }
-
-    public Machine() {
-
     }
 
     // Getters og setters
@@ -49,12 +56,25 @@ public class Machine {
         this.description = description;
     }
 
+    public List<Subassembly> getSubassemblies() {
+        return subassemblies;
+    }
+
+    public void setSubassemblies(List<Subassembly> subassemblies) {
+        this.subassemblies = subassemblies;
+    }
+
     @Override
     public String toString() {
+        String subassemblyIds = getSubassemblies().stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(", "));
         return "Machine{" +
                 "machineId=" + machineId +
                 ", machineName='" + machineName + '\'' +
                 ", description='" + description + '\'' +
+                ", subassemblyIds=" + subassemblyIds +
                 '}';
     }
+
 }

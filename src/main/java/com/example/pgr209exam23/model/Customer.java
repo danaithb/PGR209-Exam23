@@ -21,6 +21,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_seq_gen")
     @SequenceGenerator(name = "customer_seq_gen", sequenceName = "customer_seq", allocationSize = 1)
+
     @Column(name = "customer_id")
     private Long customerId;
 
@@ -30,16 +31,16 @@ public class Customer {
     @Column(name = "customer_email")
     private String customerEmail;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    @JsonIgnore // Avslutter loopen, må ha denne
-    private List<Address> addresses = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "customer_address",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<CustomerOrder> orders = new ArrayList<>();
+    private List<Address> addresses;
 
-    public Customer(Long customerId, String customerName, String customerEmail) {
-      //  this.customerId = customerId;
+    public Customer(String customerName, String customerEmail) {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
     }

@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -16,18 +14,18 @@ import java.util.List;
 public class Part {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "part_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "part_seq_gen")
+    @SequenceGenerator(name = "part_seq_gen", sequenceName = "part_seq", allocationSize = 1)
     private Long partId;
-
+    
     @Column(name = "part_name")
     private String partName;
 
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "subassembly_id")
-    @JsonIgnore
     private Subassembly subassembly;
+
 
     public Part(String partName) {
         this.partName = partName;

@@ -1,43 +1,69 @@
 package com.example.pgr209exam23.model;
-//Kilde: Vet clinic eksempel til læreren
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 public class Subassembly {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subassembly_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subassembly_seq_gen")
+    @SequenceGenerator(name = "subassembly_seq_gen", sequenceName = "subassembly_seq", allocationSize = 1)
     private Long subassemblyId;
 
-    @Column(name = "subassembly_name")
+    @Column(nullable = false)
     private String subassemblyName;
 
-    @Column(name = "subassembly_article_number")
-    private String subassemblyArticleNumber;
+    @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Part> parts = new ArrayList<>();
 
-       @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL)
-        private List<Part> parts = new ArrayList<>();
+    public Subassembly() {}
 
-        @ManyToOne
-        @JoinColumn(name = "machine_id")
-        private Machine machine;
-
-    public Subassembly(String subassemblyName, String subassemblyArticleNumber) {
+    public Subassembly(String subassemblyName) {
         this.subassemblyName = subassemblyName;
-        this.subassemblyArticleNumber = subassemblyArticleNumber;
     }
 
+    public Long getSubassemblyId() {
+        return subassemblyId;
+    }
 
+    public void setSubassemblyId(Long subassemblyId) {
+        this.subassemblyId = subassemblyId;
+    }
+
+    public String getSubassemblyName() {
+        return subassemblyName;
+    }
+
+    public void setSubassemblyName(String subassemblyName) {
+        this.subassemblyName = subassemblyName;
+    }
+
+    public List<Part> getParts() {
+        return parts;
+    }
+
+    public void setParts(List<Part> parts) {
+        this.parts = parts;
+    }
+
+    public List<Long> getPartIds() {
+        return parts.stream()
+                .map(Part::getPartId)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
+        String partIds = getPartIds().stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(", "));
+        return "Subassembly{" +
+                "subassemblyId=" + subassemblyId +
+                ", subassemblyName='" + subassemblyName + '\'' +
+                ", parts=" + partIds +
+                '}';
+    }
 }
 

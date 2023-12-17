@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/machines")
+@RequestMapping("/api/machine")
 public class MachineController {
 
     private final MachineService machineService;
@@ -17,6 +17,7 @@ public class MachineController {
         this.machineService = machineService;
     }
 
+    // Get one machine by ID
     @GetMapping("/{id}")
     public Machine getMachine(@PathVariable Long id) {
         return machineService.findMachineById(id);

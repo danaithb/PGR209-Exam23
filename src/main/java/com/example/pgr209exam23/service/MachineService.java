@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MachineService {
@@ -16,9 +17,13 @@ public class MachineService {
         this.machineRepo = machineRepo;
     }
 
-    // Retrieves a machine by its ID
+    // Retrieves a machine by its ID with subassemblies
+    @Transactional(readOnly = true)
     public Machine findMachineById(Long id) {
-        return machineRepo.findById(id).orElse(null);
+        return machineRepo.findById(id).map(machine -> {
+            machine.getSubassemblies().size(); // Trigger loading of subassemblies
+            return machine;
+        }).orElse(null);
     }
 
     // Creates a new machine

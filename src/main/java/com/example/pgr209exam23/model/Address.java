@@ -1,6 +1,6 @@
 package com.example.pgr209exam23.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,23 +32,12 @@ public class Address {
     @Column(name = "zip_code")
     private String zipCode;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Customer customer;
+    @ManyToMany(mappedBy = "addresses")
+    private List<Customer> customers;
 
-
-
-
-@OneToMany(mappedBy = "address")
-private List<CustomerOrder> orders = new ArrayList<>();
-
-
-    public Address(Long addressId, String street, String city, String zipCode, Customer customer) {
-        this.addressId = addressId;
+    public Address(String street, String city, String zipCode) {
         this.street = street;
         this.city = city;
         this.zipCode = zipCode;
-        this.customer = customer;
     }
 }
