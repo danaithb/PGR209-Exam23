@@ -7,3 +7,5 @@ INSERT INTO part (part_name, subassembly_id, part_id) VALUES
                                                           ('Articulated Stem', 2, 4),
                                                           ('Base Motor', 2, 5),
                                                           ('Proximity Sensors', 2, 6);
+
+ALTER SEQUENCE subassembly_seq RESTART WITH 6;
