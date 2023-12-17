@@ -40,4 +40,8 @@ public class Address {
         this.city = city;
         this.zipCode = zipCode;
     }
+
+    public boolean isIdNotNull() {
+        return addressId != null;
+    }
 }
