@@ -42,6 +42,8 @@ public class CustomerOrder {
    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
    private List<Machine> machines = new ArrayList<>();
 
+    @OneToMany(mappedBy = "customerOrder", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<CustomerOrder> orders;
     public CustomerOrder(Customer customer, LocalDateTime orderDate) {
         this.customer = customer;
         this.orderDate = orderDate;
