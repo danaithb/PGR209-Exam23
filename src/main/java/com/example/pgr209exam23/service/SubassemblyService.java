@@ -24,9 +24,17 @@ public class SubassemblyService {
         return subassemblyRepo.save(subassembly);
     }
 
+    public static class SubassemblyNotFoundException extends RuntimeException {
+        public SubassemblyNotFoundException(String message) {
+            super(message);
+        }
+    }
+
     //Get one by id
     public Subassembly findSubassemblyById(Long id) {
-        return subassemblyRepo.findById(id).orElse(null);
+        return subassemblyRepo.findById(id).orElseThrow(() ->
+                new SubassemblyNotFoundException("Subassembly not found for this id :: " + id)
+        );
     }
 
     // Get all with pagination

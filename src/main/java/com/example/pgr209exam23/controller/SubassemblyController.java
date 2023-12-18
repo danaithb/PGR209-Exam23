@@ -5,6 +5,8 @@ import com.example.pgr209exam23.service.SubassemblyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 //RESTful API controller for part. Interacts with partService.
@@ -50,5 +52,10 @@ public class SubassemblyController {
     @PutMapping("/{id}")
     public Subassembly updateSubassembly(@PathVariable Long id, @RequestBody Subassembly updatedSubassembly) {
         return subassemblyService.updateSubassembly(id, updatedSubassembly);
+    }
+
+    @ExceptionHandler(SubassemblyService.SubassemblyNotFoundException.class)
+    public ResponseEntity<?> handleSubassemblyNotFoundException(SubassemblyService.SubassemblyNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 }
