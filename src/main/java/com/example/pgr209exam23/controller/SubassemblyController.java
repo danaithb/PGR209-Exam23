@@ -1,5 +1,6 @@
 package com.example.pgr209exam23.controller;
 
+import com.example.pgr209exam23.globalExeption.ResourceNotFoundException;
 import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.service.SubassemblyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,10 +51,15 @@ public class SubassemblyController {
 
     //Update one
     @PutMapping("/{id}")
-    public Subassembly updateSubassembly(@PathVariable Long id, @RequestBody Subassembly updatedSubassembly) {
-        return subassemblyService.updateSubassembly(id, updatedSubassembly);
+    public ResponseEntity<?> updateSubassembly(@PathVariable Long id, @RequestBody Subassembly updatedSubassembly) {
+        try {
+            Subassembly updated = subassemblyService.updateSubassembly(id, updatedSubassembly);
+            return new ResponseEntity<>(updated, HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            // Return a 404 Not Found response if the subassembly is not found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
-
     @ExceptionHandler(SubassemblyService.SubassemblyNotFoundException.class)
     public ResponseEntity<?> handleSubassemblyNotFoundException(SubassemblyService.SubassemblyNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());

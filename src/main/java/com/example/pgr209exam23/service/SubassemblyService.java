@@ -7,6 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import com.example.pgr209exam23.globalExeption.ResourceNotFoundException;
+
 //Service class for handling Subassembly-related operations. Interacts with the SubassemblyRepo
 //to perform CRUD operations on Subassembly entities.
 @Service
@@ -51,15 +54,14 @@ public class SubassemblyService {
 
     //Update one
     public Subassembly updateSubassembly(Long id, Subassembly updatedSubassembly) {
-        return subassemblyRepo.findById(id).map(subassembly -> {
-            subassembly.setSubassemblyName(updatedSubassembly.getSubassemblyName());
-
-            return subassemblyRepo.save(subassembly);
-        }).orElseGet(() -> {
-            updatedSubassembly.setSubassemblyId(id);
-            // Ikke sett subassemblyArticleNumber her heller
-            return subassemblyRepo.save(updatedSubassembly);
-        });
+        // Check if the subassembly with the given ID exists
+        Optional<Subassembly> existingSubassembly = subassemblyRepo.findById(id);
+        if (!existingSubassembly.isPresent()) {
+                throw new ResourceNotFoundException("Subassembly not found for this id :: " + id);
+        }
+       Subassembly subassemblyToUpdate = existingSubassembly.get();
+        subassemblyToUpdate.setSubassemblyName(updatedSubassembly.getSubassemblyName());
+         return subassemblyRepo.save(subassemblyToUpdate);
     }
 
 }
