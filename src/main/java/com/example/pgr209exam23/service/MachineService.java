@@ -1,5 +1,6 @@
 package com.example.pgr209exam23.service;
 
+import com.example.pgr209exam23.globalExeption.ResourceNotFoundException;
 import com.example.pgr209exam23.model.Machine;
 import com.example.pgr209exam23.repo.MachineRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,11 @@ public class MachineService {
         this.machineRepo = machineRepo;
     }
 
-    // Retrieves a machine by its Id with subassemblies
+    // Retrieves a machine by its id with subassemblies
     @Transactional(readOnly = true)
     public Machine findMachineById(Long id) {
-        return machineRepo.findById(id).map(machine -> {
-            machine.getSubassemblyIds().size(); // Trigger loading of subassemblies
-            return machine;
-        }).orElse(null);
+        return machineRepo.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Machine not found for this id :: " + id));
     }
 
     // Create one
@@ -35,6 +34,9 @@ public class MachineService {
 
     // Delete one
     public void deleteMachineById(Long id) {
+        if (!machineRepo.existsById(id)) {
+            throw new ResourceNotFoundException("Machine not found for this id :: " + id);
+        }
         machineRepo.deleteById(id);
     }
 
@@ -50,9 +52,6 @@ public class MachineService {
             machine.setDescription(updatedMachine.getDescription());
 
             return machineRepo.save(machine);
-        }).orElseGet(() -> {
-            updatedMachine.setMachineId(id);
-            return machineRepo.save(updatedMachine);
-        });
+        }).orElseThrow(() -> new ResourceNotFoundException("Machine not found for this id :: " + id));
     }
 }
