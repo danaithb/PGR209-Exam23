@@ -40,10 +40,11 @@ public class PartController {
      }
 
     //Update one
-     @PutMapping
-     public Part updatePart(@RequestBody Part part) {
-         return partService.updatePart(part);
-     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Part> updatePart(@PathVariable Long id, @RequestBody Part part) {
+        Part updatedPart = partService.updatePart(id, part);
+        return new ResponseEntity<>(updatedPart, HttpStatus.OK);
+    }
 
     //Get all with pagination
     @GetMapping

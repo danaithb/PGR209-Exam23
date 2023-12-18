@@ -38,8 +38,11 @@ public class PartService {
         partRepo.deleteById(id);
     }
 
-    //update one
-    public Part updatePart(Part part){
+    //Update one
+    public Part updatePart(Long id, Part partDetails) {
+        Part part = partRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Part not found with id " + id));
+        part.setPartName(partDetails.getPartName());
         return partRepo.save(part);
     }
 }
