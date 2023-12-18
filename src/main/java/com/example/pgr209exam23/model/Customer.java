@@ -34,16 +34,15 @@ public class Customer {
     @Column(name = "customer_email")
     private String customerEmail;
 
-    //Represents a many-to-many relationship with Address entity.
+    //Represents a one-to-many relationship with Address entity.
     //Each customer can have many addresses.
-    @ManyToMany
-    @JoinTable(
-            name = "customer_address",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "address_id")
-    )
-
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Address> addresses;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<CustomerOrder> orders;
 
     public Customer(String customerName, String customerEmail) {
         this.customerName = customerName;

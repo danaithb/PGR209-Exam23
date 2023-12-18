@@ -30,9 +30,10 @@ public class Address {
     @Column(name = "zip_code")
     private String zipCode;
 
-    //many-to-many relationship with the customer entity.
-    @ManyToMany(mappedBy = "addresses")
-    private List<Customer> customers;
+    //many-to-one relationship with the customer entity.
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public Address(String street, String city, String zipCode) {
         this.street = street;
