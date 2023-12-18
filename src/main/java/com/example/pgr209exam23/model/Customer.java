@@ -16,6 +16,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 
+//This class represents the Customer entity in the database. It includes
+//fields such as customerId, customerName, and customerEmail. JPA annotations
+//are used to create a relational database.
 public class Customer {
 
     @Id
@@ -31,6 +34,8 @@ public class Customer {
     @Column(name = "customer_email")
     private String customerEmail;
 
+    //Represents a many-to-many relationship with Address entity.
+    //Each customer can have many addresses.
     @ManyToMany
     @JoinTable(
             name = "customer_address",

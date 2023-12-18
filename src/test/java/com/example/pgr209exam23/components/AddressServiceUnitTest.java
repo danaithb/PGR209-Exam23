@@ -12,6 +12,10 @@ import static org.mockito.Mockito.when;
 
 import static org.mockito.ArgumentMatchers.any;
 
+//A unit test for the AddressService. Uses the Spring Boot testing framework and is annotated
+//with @SpringBootTest.
+//A test that verifies the functionality of creating an address.
+
 @SpringBootTest
 public class AddressServiceUnitTest {
 
@@ -23,9 +27,13 @@ public class AddressServiceUnitTest {
 
     @Test
     void shouldCreateAddress() {
+        //here we create a new address
         Address newAddress = new Address("Blåveien", "Oslo", "6666");
+
+        //here we mock the behavior of the repo to return the new address
         when(addressRepo.save(any(Address.class))).thenReturn(newAddress);
 
+        //here we call the createAddress and assert properties to address.
         Address createdAddress = addressService.createAddress(newAddress);
 
         assert "Blåveien".equals(createdAddress.getStreet());

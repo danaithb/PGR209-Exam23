@@ -1,3 +1,4 @@
+--Creates table orders. Uses orders_seq to generate a unique value for orderId.
 CREATE TABLE IF NOT EXISTS orders (
     order_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     customer_id BIGINT NOT NULL,

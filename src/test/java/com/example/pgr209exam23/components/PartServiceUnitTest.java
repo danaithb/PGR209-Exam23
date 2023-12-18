@@ -12,6 +12,8 @@ import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
+//Represents unit tests for the PartService.
+//Tests for creating a part, finding a part by Id, and deleting a part by Id.
 @SpringBootTest
 public class PartServiceUnitTest {
 

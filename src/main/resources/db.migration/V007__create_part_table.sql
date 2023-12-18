@@ -1,3 +1,4 @@
+--Creates table part. Uses part_seq to generate a unique value for partId.
 CREATE TABLE IF NOT EXISTS part (
     part_id BIGINT PRIMARY KEY,
     subassembly_id BIGINT,

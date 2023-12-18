@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
+//Represents a subassembly entity in the database. The entity includes fields such as subassemblyId,
+//subassemblyName, and a list of associated parts. JPA annotations are used to define the
+//relational database structure.
 @Entity
 public class Subassembly {
 

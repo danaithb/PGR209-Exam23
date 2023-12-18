@@ -10,6 +10,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+//End-to-end tests for the OrderController using MockMvc.
+//tests the functionality of fetching all orders through the "/api/order" using get request.
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class OrderControllerEndToEndTest {

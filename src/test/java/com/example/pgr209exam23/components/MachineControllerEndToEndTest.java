@@ -10,6 +10,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+//An end-to-end test for the MachineController.
+//Uses Spring Boot testing framework with MockMvc for simulating HTTP requests.
+//the test verifies the functionality of fetching all machines from the "/api/machine".
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MachineControllerEndToEndTest {

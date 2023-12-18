@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+//Service class for handling CustomerOrder-related operations. It interacts with the OrderRepo
+//to perform CRUD operations on CustomerOrder entities.
 @Service
 public class OrderService {
 
