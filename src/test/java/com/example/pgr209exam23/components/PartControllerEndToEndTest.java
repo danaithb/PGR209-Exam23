@@ -28,11 +28,5 @@ public class PartControllerEndToEndTest {
                 .andExpect(content().json("{\"partId\":1,\"partName\":\"Girkasse Del 1\"}"));
     }
 
-    //må sjekke opp i noe før jeg kan fikse denne
-    /*@Test
-    void shouldDeletePartById() throws Exception {
-        mockMvc.perform(delete("/api/part/{id}", 1))
-                .andExpect(status().isNoContent());
-    }*/
 
 }
