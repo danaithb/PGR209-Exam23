@@ -1,4 +1,4 @@
-package com.example.pgr209exam23.components;
+package com.example.pgr209exam23.orders;
 
 import com.example.pgr209exam23.model.Customer;
 import com.example.pgr209exam23.model.CustomerOrder;

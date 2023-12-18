@@ -1,4 +1,4 @@
-package com.example.pgr209exam23.components;
+package com.example.pgr209exam23.addresses;
 
 import com.example.pgr209exam23.model.Address;
 import com.example.pgr209exam23.repo.AddressRepo;
