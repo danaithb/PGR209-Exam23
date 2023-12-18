@@ -31,14 +31,14 @@ public class Customer {
     @Column(name = "customer_email")
     private String customerEmail;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "customer_address",
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "address_id")
     )
-
     private List<Address> addresses;
+
 
     public Customer(String customerName, String customerEmail) {
         this.customerName = customerName;
