@@ -10,6 +10,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+//This class represents the CustomerOrder entity in the database. It includes fields
+//such as orderId, customer, orderDate, address, and machines. JPA annotations are used to
+//establish relationships and create a relational database.
+
 @Entity
 @Getter
 @Setter
@@ -29,11 +33,13 @@ public class CustomerOrder {
     @Column(name = "order_date")
     private LocalDateTime orderDate;
 
-    @ManyToOne
+    //The address associated with the order
+   @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+   //a list of machines for the order
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Machine> machines = new ArrayList<>();
 
     public CustomerOrder(Customer customer, LocalDateTime orderDate) {

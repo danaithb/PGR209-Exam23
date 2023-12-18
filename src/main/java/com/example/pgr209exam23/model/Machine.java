@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//This class represents the Machine entity in the database. It includes fields such as machineId,
+//machineName, description, and a list of subassemblies. JPA annotations are used to create a
+//relational database.
 @Entity
 public class Machine {
 
@@ -19,6 +22,7 @@ public class Machine {
 
     private String description;
 
+    //A list of subassemblies associated with the machine.
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "machine_id")
     private List<Subassembly> subassemblies = new ArrayList<>();

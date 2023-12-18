@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//This class represents the Address entity in the database. It includes fields like addressId, street,
+//city and zipcode. We used JPA annotations to create a relational database.
 @Entity
 @Getter
 @Setter
@@ -28,6 +30,7 @@ public class Address {
     @Column(name = "zip_code")
     private String zipCode;
 
+    //many-to-many relationship with the customer entity.
     @ManyToMany(mappedBy = "addresses")
     private List<Customer> customers;
 

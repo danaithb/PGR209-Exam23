@@ -12,6 +12,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+//End-to-end tests for the PartController using MockMvc.
+//Tests for fetching a part by ID, and deleting a part by id.
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PartControllerEndToEndTest {

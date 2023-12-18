@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+//This class represents the Part entity in the database. It includes fields such as partId,
+//partName, and a reference to the parent Subassembly.JPA annotations are used to create a
+//relational database.
 @Entity
 @Getter
 @Setter
@@ -21,6 +23,8 @@ public class Part {
     @Column(name = "part_name")
     private String partName;
 
+   // The parent Subassembly to which the part belongs. This field is annotated with @JsonIgnore
+   // to avoid a never-ending loop when converting the object to JSON format
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "subassembly_id")

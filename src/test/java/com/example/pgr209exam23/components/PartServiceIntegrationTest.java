@@ -8,6 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+//Integration tests for the PartService.
+//Includes a test for creating and saving a new part.
+
 @SpringBootTest
 public class PartServiceIntegrationTest {
 

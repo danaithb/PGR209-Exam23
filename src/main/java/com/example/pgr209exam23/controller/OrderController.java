@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+//RESTful API controller for order. Interacting with orderService to perform our methods.
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {
@@ -19,27 +20,32 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    //Get one by id
     @GetMapping("/{id}")
     public CustomerOrder getOrder(@PathVariable Long id) {
         return orderService.findOrderById(id);
     }
 
+    //Create one
     @PostMapping
     public ResponseEntity<CustomerOrder> createOrder(@RequestBody CustomerOrder order) {
         CustomerOrder createdOrder = orderService.createOrder(order);
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
 
+    //Delete one
     @DeleteMapping("/{id}")
     public void deleteOrder(@PathVariable Long id) {
         orderService.deleteOrderById(id);
     }
 
+    //Update one
     @PutMapping
     public CustomerOrder updateOrder(@RequestBody CustomerOrder order) {
         return orderService.updateOrder(order);
     }
 
+    //Get all with pagination
     @GetMapping
     public Page<CustomerOrder> getOrders(
             @RequestParam(defaultValue = "0") int page,

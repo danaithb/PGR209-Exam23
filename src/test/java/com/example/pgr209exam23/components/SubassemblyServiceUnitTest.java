@@ -16,6 +16,9 @@ import java.util.Collections;
 
 import java.util.Optional;
 
+//Unit tests for the SubassemblyService.
+//tests for creating, finding by Id, and fetching all subassemblies.
+
 @SpringBootTest
 public class SubassemblyServiceUnitTest {
 

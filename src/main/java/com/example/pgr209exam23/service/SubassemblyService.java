@@ -1,20 +1,14 @@
 package com.example.pgr209exam23.service;
 
-import com.example.pgr209exam23.model.CustomerOrder;
-import com.example.pgr209exam23.model.Machine;
 import com.example.pgr209exam23.model.Subassembly;
 import com.example.pgr209exam23.repo.SubassemblyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
+//Service class for handling Subassembly-related operations. Interacts with the SubassemblyRepo
+//to perform CRUD operations on Subassembly entities.
 @Service
 public class SubassemblyService {
 
@@ -47,6 +41,7 @@ public class SubassemblyService {
         subassemblyRepo.deleteById(id);
     }
 
+    //Update one
     public Subassembly updateSubassembly(Long id, Subassembly updatedSubassembly) {
         return subassemblyRepo.findById(id).map(subassembly -> {
             subassembly.setSubassemblyName(updatedSubassembly.getSubassemblyName());

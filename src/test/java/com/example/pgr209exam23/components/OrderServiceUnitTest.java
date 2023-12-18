@@ -14,6 +14,9 @@ import java.time.LocalDateTime;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+//unit tests for the OrderService with mock objects.
+//tests the update functionality of the OrderService.
+
 @SpringBootTest
 public class OrderServiceUnitTest {
     @MockBean

@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+//Service class for handling operations related to address. It interacts with the AddressRepo
+//to perform CRUD operations on Address entities.
 @Service
 public class AddressService {
     private final AddressRepo addressRepo;

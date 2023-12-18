@@ -1,16 +1,14 @@
 package com.example.pgr209exam23.service;
 
-import com.example.pgr209exam23.model.CustomerOrder;
 import com.example.pgr209exam23.model.Part;
-import com.example.pgr209exam23.repo.OrderRepo;
 import com.example.pgr209exam23.repo.PartRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-
+//Service class for handling Part-related operations. It interacts with the PartRepo to
+//perform CRUD operations on Part entities.
 @Service
 public class PartService {
 
