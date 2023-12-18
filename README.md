@@ -20,7 +20,7 @@ To run the suite of tests:
 
 1. Open the terminal at the root of the project.
 2. Execute the Maven command:
-mvn test
+'mvn test'
 
 
 This will trigger the execution of unit and integration tests within the application.
