@@ -25,7 +25,7 @@ public class PartControllerEndToEndTest {
     void shouldFetchPartById() throws Exception {
         mockMvc.perform(get("/api/part/{id}", 1))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"partId\":1,\"partName\":\"Girkasse Del 1\"}"));
+                .andExpect(content().json("{\"partId\":1,\"partName\":\"Petals with LED lights\"}"));
     }
 
 
