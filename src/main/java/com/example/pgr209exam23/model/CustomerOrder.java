@@ -39,8 +39,8 @@ public class CustomerOrder {
     private Address address;
 
    //a list of machines for the order
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Machine> machines = new ArrayList<>();
+   @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+   private List<Machine> machines = new ArrayList<>();
 
     public CustomerOrder(Customer customer, LocalDateTime orderDate) {
         this.customer = customer;
