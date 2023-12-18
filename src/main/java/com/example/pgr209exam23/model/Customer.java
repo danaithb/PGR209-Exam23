@@ -45,8 +45,17 @@ public class Customer {
 
     private List<Address> addresses;
 
+    //la til dette
+    @ManyToMany
+    @JoinTable(
+            name = "customer_customerorder",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id")
+    )
+    private List<CustomerOrder> customerOrders;
     public Customer(String customerName, String customerEmail) {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
+        this.customerOrders = new ArrayList<>();
     }
 }
