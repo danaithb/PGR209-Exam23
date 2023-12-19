@@ -20,14 +20,15 @@ public class Subassembly {
     @Column(nullable = false)
     private String subassemblyName;
 
+    // Relationship to Part
     @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Part> parts = new ArrayList<>();
 
+    // Relationship to Machine
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "machine_id", referencedColumnName = "machineId")
     private Machine machine;
-
 
     public Subassembly() {}
 
@@ -35,6 +36,7 @@ public class Subassembly {
         this.subassemblyName = subassemblyName;
     }
 
+    // Getters and setters
     public Long getSubassemblyId() {
         return subassemblyId;
     }
@@ -59,11 +61,6 @@ public class Subassembly {
         this.parts = parts;
     }
 
-    public void addPart(Part part) {
-        parts.add(part);
-        part.setSubassembly(this);
-    }
-
     public Machine getMachine() {
         return machine;
     }
@@ -86,8 +83,8 @@ public class Subassembly {
         return "Subassembly{" +
                 "subassemblyId=" + subassemblyId +
                 ", subassemblyName='" + subassemblyName + '\'' +
+                ", machineId=" + (machine != null ? machine.getMachineId() : "null") +
                 ", parts=" + partIds +
                 '}';
     }
 }
-
