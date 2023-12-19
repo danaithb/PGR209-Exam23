@@ -57,12 +57,11 @@ public class SubassemblyService {
         // Check if the subassembly with the given ID exists
         Optional<Subassembly> existingSubassembly = subassemblyRepo.findById(id);
         if (!existingSubassembly.isPresent()) {
-                throw new ResourceNotFoundException("Subassembly not found for this id :: " + id);
+            throw new ResourceNotFoundException("Subassembly not found for this id :: " + id);
         }
-       Subassembly subassemblyToUpdate = existingSubassembly.get();
+        Subassembly subassemblyToUpdate = existingSubassembly.get();
         subassemblyToUpdate.setSubassemblyName(updatedSubassembly.getSubassemblyName());
-         return subassemblyRepo.save(subassemblyToUpdate);
+        return subassemblyRepo.save(subassemblyToUpdate);
     }
 
 }
-

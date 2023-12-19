@@ -25,7 +25,6 @@ public class Subassembly {
     private List<Part> parts = new ArrayList<>();
 
     // Relationship to Machine
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "machine_id", referencedColumnName = "machineId")
     private Machine machine;
@@ -88,3 +87,4 @@ public class Subassembly {
                 '}';
     }
 }
+
