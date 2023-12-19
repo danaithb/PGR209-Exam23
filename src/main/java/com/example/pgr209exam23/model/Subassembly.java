@@ -1,5 +1,6 @@
 package com.example.pgr209exam23.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,6 +22,8 @@ public class Subassembly {
 
     @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Part> parts = new ArrayList<>();
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "machine_id", referencedColumnName = "machineId")
     private Machine machine;
@@ -54,6 +57,11 @@ public class Subassembly {
 
     public void setParts(List<Part> parts) {
         this.parts = parts;
+    }
+
+    public void addPart(Part part) {
+        parts.add(part);
+        part.setSubassembly(this);
     }
 
     public Machine getMachine() {
