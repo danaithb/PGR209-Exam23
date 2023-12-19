@@ -11,4 +11,4 @@ INSERT INTO part (part_name, subassembly_id, part_id) VALUES
 
 -- Restarts the sequence for generating subassembly ids with a new starting value of 6,
 -- because we inserted 6 parts.
-ALTER SEQUENCE subassembly_seq RESTART WITH 6;
+ALTER SEQUENCE part_seq RESTART WITH 6;
