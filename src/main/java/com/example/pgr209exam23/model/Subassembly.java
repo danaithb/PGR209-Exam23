@@ -21,6 +21,10 @@ public class Subassembly {
 
     @OneToMany(mappedBy = "subassembly", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Part> parts = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "machine_id", referencedColumnName = "machineId")
+    private Machine machine;
+
 
     public Subassembly() {}
 
@@ -50,6 +54,14 @@ public class Subassembly {
 
     public void setParts(List<Part> parts) {
         this.parts = parts;
+    }
+
+    public Machine getMachine() {
+        return machine;
+    }
+
+    public void setMachine(Machine machine) {
+        this.machine = machine;
     }
 
     public List<Long> getPartIds() {
