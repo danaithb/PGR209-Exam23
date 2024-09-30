@@ -12,7 +12,7 @@ To run the application:
 Once the application is running, you can access the H2 database console at the following URL:
 http://localhost:8080/h2-console
 
-Use the default connection settings provided by Spring Boot to connect to the in-memory H2 database. Username is admin and there is no password.
+Use the default connection settings provided by Spring Boot to connect to the in-memory H2 database. 
 
 ## Running Tests
 
